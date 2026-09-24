@@ -18,21 +18,20 @@ export default function Hero() {
             Temukan Pembeli untuk <span className="hl">Hasil Panen</span> Maggot
           </h1>
           <p className="lead">
-            Peta calon pembeli maggot BSF: peternak, tambak, toko pakan, dan dinas lingkungan hidup di Pekalongan, Batang, dan Semarang.
-            Daftar ini masih tahap awal dan sedang dihubungi satu per satu oleh tim MagoGo.
+            Peta jaringan mitra pembeli maggot BSF terverifikasi: peternak, tambak, toko pakan, dan dinas lingkungan hidup di Pekalongan, Batang, dan Semarang yang telah menjalin kerja sama dan MoU.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#peta">
               Buka Peta
             </a>
             <a className="btn btn-ghost" href="#tentang">
-              Cara Kami Memverifikasi
+              Tentang Verifikasi &amp; MoU
             </a>
           </div>
           <dl className="hero-stats">
             <div>
               <dt>{total}</dt>
-              <dd>Calon mitra</dd>
+              <dd>Mitra Terverifikasi</dd>
             </div>
             <div>
               <dt>{wilayahCount}</dt>
@@ -45,10 +44,10 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div className="hero-panel glass" aria-label="Ringkasan calon mitra per kategori">
+        <div className="hero-panel glass" aria-label="Ringkasan mitra per kategori">
           <div className="panel-head">
             <span className="mono-label">Ringkasan network</span>
-            <span className="mono-label accent">Semua calon</span>
+            <span className="mono-label accent">Terverifikasi (MoU)</span>
           </div>
           <div className="metric-grid">
             {(Object.keys(CATEGORIES) as CategoryId[]).map((id) => {

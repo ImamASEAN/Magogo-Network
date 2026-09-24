@@ -28,11 +28,10 @@ export default function About() {
           <span className="pill pill-light">
             <i className="dot" /> Tentang data
           </span>
-          <h2>Dari Calon Menjadi Mitra Terverifikasi</h2>
+          <h2>Jaringan Mitra Terverifikasi &amp; MoU</h2>
           <p>
-            Setiap titik di peta melewati tiga tahap. Saat ini semua tempat masih berstatus calon, jadi
-            kontak pemiliknya belum ditampilkan. Titik berwarna hijau tosca adalah Dinas Lingkungan Hidup:
-            mereka bukan pembeli langsung, tetapi pintu masuk kerja sama pengelolaan sampah organik.
+            Seluruh mitra pembeli maggot di jaringan ini telah diverifikasi dan memiliki kesepakatan kerja sama (MoU) dengan MagoGo.
+            Titik berwarna hijau tosca adalah Dinas Lingkungan Hidup: pintu masuk kerja sama strategis untuk pengelolaan sampah organik terpadu.
           </p>
         </div>
 

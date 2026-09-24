@@ -143,8 +143,8 @@ export default function NetworkMap() {
           <span className="pill pill-dark">
             <i className="dot" /> Peta network
           </span>
-          <h2>Calon Mitra di Pekalongan, Batang, dan Semarang</h2>
-          <p>Pilih kategori atau cari nama tempat. Lingkaran hijau menunjukkan jumlah tempat, klik untuk memperbesar.</p>
+          <h2>Mitra Terverifikasi di Pekalongan, Batang, dan Semarang</h2>
+          <p>Pilih kategori atau cari nama tempat. Seluruh mitra telah terverifikasi melalui kesepakatan kerja sama (MoU).</p>
         </div>
 
         <div className="window">
@@ -156,7 +156,7 @@ export default function NetworkMap() {
             </span>
             <span className="window-url">magogo.io/network</span>
             <span className="window-status" aria-live="polite">
-              {filtered.length} dari {PARTNERS.length} calon mitra
+              {filtered.length} dari {PARTNERS.length} mitra terverifikasi
             </span>
           </div>
 
@@ -188,7 +188,7 @@ export default function NetworkMap() {
 
           <div className="map-layout">
             <div className="map-box">
-              <div ref={mapEl} className="map" role="region" aria-label="Peta calon mitra MagoGo Network" />
+              <div ref={mapEl} className="map" role="region" aria-label="Peta mitra terverifikasi MagoGo Network" />
               <div className="legend" aria-hidden="true">
                 {(Object.keys(CATEGORIES) as CategoryId[]).map((id) => (
                   <span key={id}>
@@ -199,7 +199,7 @@ export default function NetworkMap() {
               </div>
             </div>
 
-            <ul className="list" aria-label="Daftar calon mitra">
+            <ul className="list" aria-label="Daftar mitra terverifikasi">
               {filtered.length === 0 && (
                 <li className="empty">
                   <strong>Tidak ada hasil.</strong>
