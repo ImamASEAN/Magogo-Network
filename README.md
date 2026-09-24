@@ -1,6 +1,6 @@
 # MagoGo Network
 
-Peta calon pembeli hasil panen maggot (Pekalongan dan Batang). Vite + React + TypeScript + Leaflet.
+Peta calon pembeli hasil panen maggot (Pekalongan, Batang, dan Semarang) beserta DLH setempat. Vite + React + TypeScript + Leaflet.
 
 ## Jalankan lokal (PowerShell)
 

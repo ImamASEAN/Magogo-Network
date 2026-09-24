@@ -31,7 +31,8 @@ export default function About() {
           <h2>Dari Calon Menjadi Mitra Terverifikasi</h2>
           <p>
             Setiap titik di peta melewati tiga tahap. Saat ini semua tempat masih berstatus calon, jadi
-            kontak pemiliknya belum ditampilkan.
+            kontak pemiliknya belum ditampilkan. Titik berwarna hijau tosca adalah Dinas Lingkungan Hidup:
+            mereka bukan pembeli langsung, tetapi pintu masuk kerja sama pengelolaan sampah organik.
           </p>
         </div>
 

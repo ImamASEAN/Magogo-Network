@@ -18,7 +18,7 @@ export default function Hero() {
             Temukan Pembeli untuk <span className="hl">Hasil Panen</span> Maggot
           </h1>
           <p className="lead">
-            Peta calon pembeli maggot BSF: peternak, tambak, dan toko pakan di Pekalongan dan Batang.
+            Peta calon pembeli maggot BSF: peternak, tambak, toko pakan, dan dinas lingkungan hidup di Pekalongan, Batang, dan Semarang.
             Daftar ini masih tahap awal dan sedang dihubungi satu per satu oleh tim MagoGo.
           </p>
           <div className="hero-actions">

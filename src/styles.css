@@ -360,6 +360,10 @@ input {
   border-radius: 4px;
 }
 
+.metric:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .metric small {
   display: inline-flex;
   align-items: center;
@@ -675,6 +679,24 @@ input {
 .pin.is-selected {
   transform: scale(1.4);
   box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 45%, transparent), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cluster-wrap {
+  background: none;
+  border: 0;
+}
+
+.cluster {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--mint-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 6px rgba(56, 224, 140, 0.3), 0 6px 14px rgba(0, 0, 0, 0.35);
 }
 
 .leaflet-popup-content-wrapper {

@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import L from "leaflet";
+import "leaflet.markercluster";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
 import { CATEGORIES, PARTNERS, STATUSES, type CategoryId, type Partner } from "../data/partners";
 
 type Filter = CategoryId | "semua";
@@ -42,7 +44,7 @@ export default function NetworkMap() {
 
   const mapEl = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
-  const layerRef = useRef<L.LayerGroup | null>(null);
+  const layerRef = useRef<L.MarkerClusterGroup | null>(null);
   const markersRef = useRef<Map<string, L.Marker>>(new Map());
   const itemRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
@@ -58,7 +60,7 @@ export default function NetworkMap() {
   // Buat peta sekali saja.
   useEffect(() => {
     if (!mapEl.current || mapRef.current) return;
-    const map = L.map(mapEl.current, { zoomControl: false, scrollWheelZoom: false }).setView(CENTER, 10);
+    const map = L.map(mapEl.current, { zoomControl: false, scrollWheelZoom: false, maxZoom: 19 }).setView(CENTER, 10);
     L.control.zoom({ position: "bottomright" }).addTo(map);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
@@ -67,7 +69,21 @@ export default function NetworkMap() {
     // Scroll halaman tidak terganggu; zoom dengan scroll aktif setelah peta diklik.
     map.on("click", () => map.scrollWheelZoom.enable());
     map.on("mouseout", () => map.scrollWheelZoom.disable());
-    layerRef.current = L.layerGroup().addTo(map);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    layerRef.current = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 44,
+      animate: !reduceMotion,
+      iconCreateFunction: (cluster) => {
+        const n = cluster.getChildCount();
+        const size = n < 10 ? 38 : n < 25 ? 46 : 54;
+        return L.divIcon({
+          html: `<span class="cluster" style="width:${size}px;height:${size}px">${n}</span>`,
+          className: "cluster-wrap",
+          iconSize: [size, size],
+        });
+      },
+    }).addTo(map);
     mapRef.current = map;
     const markers = markersRef.current;
     return () => {
@@ -108,16 +124,11 @@ export default function NetworkMap() {
 
   const selectFromList = (p: Partner) => {
     setSelectedId(p.id);
-    const map = mapRef.current;
     const marker = markersRef.current.get(p.id);
-    if (!map || !marker) return;
-    const zoom = Math.max(map.getZoom(), 13);
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      map.setView([p.lat, p.lng], zoom, { animate: false });
-    } else {
-      map.flyTo([p.lat, p.lng], zoom, { duration: 0.8 });
-    }
-    marker.openPopup();
+    const layer = layerRef.current;
+    if (!marker || !layer) return;
+    // Jika titik masih tergabung dalam lingkaran, peta memperbesar dulu baru membuka detail.
+    layer.zoomToShowLayer(marker, () => marker.openPopup());
   };
 
   const filters: { id: Filter; label: string }[] = [
@@ -132,8 +143,8 @@ export default function NetworkMap() {
           <span className="pill pill-dark">
             <i className="dot" /> Peta network
           </span>
-          <h2>Calon Mitra di Pekalongan dan Batang</h2>
-          <p>Pilih kategori atau cari nama tempat. Klik titik di peta untuk melihat detailnya.</p>
+          <h2>Calon Mitra di Pekalongan, Batang, dan Semarang</h2>
+          <p>Pilih kategori atau cari nama tempat. Lingkaran hijau menunjukkan jumlah tempat, klik untuk memperbesar.</p>
         </div>
 
         <div className="window">
