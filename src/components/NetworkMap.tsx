@@ -143,8 +143,8 @@ export default function NetworkMap() {
           <span className="pill pill-dark">
             <i className="dot" /> Peta network
           </span>
-          <h2>Mitra Terverifikasi di Pekalongan, Batang, dan Semarang</h2>
-          <p>Pilih kategori atau cari nama tempat. Seluruh mitra telah terverifikasi melalui kesepakatan kerja sama (MoU).</p>
+          <h2>Peta Jaringan Mitra Maggot di Pekalongan, Batang, dan Semarang</h2>
+          <p>Pilih kategori atau cari nama tempat. Titik bertanda 'Terverifikasi' telah memiliki kesepakatan kerja sama (MoU).</p>
         </div>
 
         <div className="window">
@@ -156,7 +156,7 @@ export default function NetworkMap() {
             </span>
             <span className="window-url">magogo.io/network</span>
             <span className="window-status" aria-live="polite">
-              {filtered.length} dari {PARTNERS.length} mitra terverifikasi
+              {filtered.length} dari {PARTNERS.length} titik network
             </span>
           </div>
 
@@ -199,7 +199,7 @@ export default function NetworkMap() {
               </div>
             </div>
 
-            <ul className="list" aria-label="Daftar mitra terverifikasi">
+            <ul className="list" aria-label="Daftar mitra network">
               {filtered.length === 0 && (
                 <li className="empty">
                   <strong>Tidak ada hasil.</strong>
