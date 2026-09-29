@@ -99,11 +99,11 @@ export const PARTNERS: Partner[] = [
   { id: "p67", name: "Jual Katul dan Dedak Pakan Ternak", category: "toko_pakan", area: "Plamongan Sari, Pedurungan", wilayah: "Kota Semarang", lat: -7.0178553, lng: 110.4863892, status: "calon" },
   { id: "p68", name: "PT Havindo Pakan Optima", category: "toko_pakan", area: "Kawasan Industri Candi, Ngaliyan", wilayah: "Kota Semarang", lat: -7.0134101, lng: 110.3585301, status: "calon", note: "Produsen pakan, pintu masuk ke jaringan agen." },
 
-  // --- Mitra Terverifikasi: DLH (Dinas Lingkungan Hidup) ---
-  { id: "p69", name: "DLH Kota Pekalongan", category: "dlh", area: "Kandang Panjang, Pekalongan Utara", wilayah: "Kota Pekalongan", lat: -6.8774272, lng: 109.6713099, status: "terverifikasi", note: "Mitra resmi kerja sama pengelolaan sampah organik & pakan maggot." },
-  { id: "p70", name: "Dinas Perkim LH Kabupaten Pekalongan", category: "dlh", area: "Kajen", wilayah: "Kab. Pekalongan", lat: -7.0334402, lng: 109.5981466, status: "terverifikasi", note: "Mitra resmi kerja sama pengelolaan sampah organik tingkat kabupaten." },
-  { id: "p71", name: "DLH Kabupaten Batang", category: "dlh", area: "Kauman, Batang", wilayah: "Kab. Batang", lat: -6.9111344, lng: 109.7291614, status: "terverifikasi", note: "Mitra kerja sama pengelolaan sampah organik." },
-  { id: "p72", name: "DLH Kota Semarang", category: "dlh", area: "Tugurejo, Tugu", wilayah: "Kota Semarang", lat: -6.9843209, lng: 110.3437175, status: "terverifikasi", note: "Mitra kerja sama pengelolaan sampah organik." },
+  // --- Mitra DLH & Instansi Lingkungan Hidup ---
+  { id: "p69", name: "DLH Kota Pekalongan", category: "dlh", area: "Kandang Panjang, Pekalongan Utara", wilayah: "Kota Pekalongan", lat: -6.8774272, lng: 109.6713099, status: "terverifikasi", note: "Mitra resmi kerja sama (MoU) pengelolaan sampah organik & pakan maggot." },
+  { id: "p70", name: "Dinas Perkim LH Kabupaten Pekalongan", category: "dlh", area: "Kajen", wilayah: "Kab. Pekalongan", lat: -7.0334402, lng: 109.5981466, status: "calon", note: "Kantor lingkungan hidup kabupaten (tahap penjajakan kerja sama / belum MoU)." },
+  { id: "p71", name: "DLH Kabupaten Batang", category: "dlh", area: "Kauman, Batang", wilayah: "Kab. Batang", lat: -6.9111344, lng: 109.7291614, status: "calon", note: "Kantor lingkungan hidup kabupaten (tahap penjajakan kerja sama / belum MoU)." },
+  { id: "p72", name: "DLH Kota Semarang", category: "dlh", area: "Tugurejo, Tugu", wilayah: "Kota Semarang", lat: -6.9843209, lng: 110.3437175, status: "calon", note: "Kantor lingkungan hidup kota (tahap penjajakan kerja sama / belum MoU)." },
 
   // --- Mitra Terverifikasi: Kawasan MAN IC Pekalongan (MoU) ---
   { id: "p73", name: "Tambak Pak Tafsirudin", category: "ikan", area: "Banyurip (Dekat MAN IC), Pekalongan Selatan", wilayah: "Kota Pekalongan", lat: -6.915241, lng: 109.644812, status: "terverifikasi", note: "Tambak budidaya ikan mitra terverifikasi di kawasan MAN IC Pekalongan (MoU)." },
