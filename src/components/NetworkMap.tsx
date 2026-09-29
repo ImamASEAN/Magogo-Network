@@ -39,6 +39,7 @@ const popupHtml = (p: Partner) => {
 
 export default function NetworkMap() {
   const [filter, setFilter] = useState<Filter>("semua");
+  const [onlyVerified, setOnlyVerified] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -50,12 +51,13 @@ export default function NetworkMap() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return PARTNERS.filter(
-      (p) =>
-        (filter === "semua" || p.category === filter) &&
-        (!q || `${p.name} ${p.area} ${p.wilayah}`.toLowerCase().includes(q)),
-    );
-  }, [filter, query]);
+    return PARTNERS.filter((p) => {
+      const matchCategory = filter === "semua" || p.category === filter;
+      const matchStatus = !onlyVerified || p.status === "terverifikasi";
+      const matchQuery = !q || `${p.name} ${p.area} ${p.wilayah}`.toLowerCase().includes(q);
+      return matchCategory && matchStatus && matchQuery;
+    });
+  }, [filter, onlyVerified, query]);
 
   // Buat peta sekali saja.
   useEffect(() => {
@@ -157,6 +159,7 @@ export default function NetworkMap() {
             <span className="window-url">magogo.io/network</span>
             <span className="window-status" aria-live="polite">
               {filtered.length} dari {PARTNERS.length} titik network
+              {onlyVerified && " · Hanya Terverifikasi (MoU)"}
             </span>
           </div>
 
@@ -175,15 +178,38 @@ export default function NetworkMap() {
                 </button>
               ))}
             </div>
-            <label className="search">
-              <span className="sr-only">Cari nama atau daerah</span>
-              <input
-                type="search"
-                placeholder="Cari nama atau daerah"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </label>
+
+            <div className="toolbar-controls">
+              <button
+                type="button"
+                className={`chip chip-verified${onlyVerified ? " is-active" : ""}`}
+                aria-pressed={onlyVerified}
+                onClick={() => setOnlyVerified((v) => !v)}
+                title="Tampilkan hanya mitra yang telah terverifikasi dan memiliki kesepakatan MoU"
+              >
+                <span className="verified-badge-icon" aria-hidden="true">
+                  {onlyVerified ? "✓" : "★"}
+                </span>
+                Terverifikasi (MoU)
+                <span className="badge-count">
+                  {
+                    PARTNERS.filter(
+                      (p) => (filter === "semua" || p.category === filter) && p.status === "terverifikasi",
+                    ).length
+                  }
+                </span>
+              </button>
+
+              <label className="search">
+                <span className="sr-only">Cari nama atau daerah</span>
+                <input
+                  type="search"
+                  placeholder="Cari nama atau daerah"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+            </div>
           </div>
 
           <div className="map-layout">
@@ -203,7 +229,11 @@ export default function NetworkMap() {
               {filtered.length === 0 && (
                 <li className="empty">
                   <strong>Tidak ada hasil.</strong>
-                  <span>Coba kata kunci lain atau pilih kategori Semua.</span>
+                  <span>
+                    {onlyVerified
+                      ? "Tidak ada mitra terverifikasi untuk filter ini. Coba nonaktifkan filter 'Terverifikasi (MoU)' atau pilih kategori Semua."
+                      : "Coba kata kunci lain atau pilih kategori Semua."}
+                  </span>
                 </li>
               )}
               {filtered.map((p) => (

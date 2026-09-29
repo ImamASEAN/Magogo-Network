@@ -497,6 +497,59 @@ input {
   box-shadow: 0 0 0 2px var(--mint-ink);
 }
 
+.toolbar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.chip-verified {
+  border: 1px solid rgba(56, 224, 140, 0.45);
+  background: rgba(56, 224, 140, 0.09);
+  color: var(--mint);
+  font-weight: 600;
+  gap: 0.45rem;
+}
+
+.chip-verified:hover {
+  background: rgba(56, 224, 140, 0.18);
+  border-color: var(--mint);
+  color: #fff;
+}
+
+.chip-verified.is-active {
+  background: var(--mint);
+  color: var(--mint-ink);
+  border-color: var(--mint);
+  box-shadow: 0 0 16px rgba(56, 224, 140, 0.35);
+  font-weight: 700;
+}
+
+.verified-badge-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.chip-verified .badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 0.2rem;
+}
+
+.chip-verified.is-active .badge-count {
+  background: var(--mint-ink);
+  color: var(--mint);
+}
+
 .search input {
   width: 15.5rem;
   max-width: 100%;
